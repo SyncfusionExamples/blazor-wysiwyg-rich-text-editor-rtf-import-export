@@ -1,0 +1,113 @@
+﻿@page "/"
+
+@using Syncfusion.Blazor.RichTextEditor;
+@using Syncfusion.Blazor.Inputs;
+@using Syncfusion.Blazor.Buttons;
+@inject NavigationManager navigationManager;
+@inject HttpClient Http
+@using System.Net.Http;
+@using System.Threading.Tasks;
+
+<SfRichTextEditor @bind-Value="rteValue">
+	<RichTextEditorToolbarSettings Items="Tools">
+		<RichTextEditorCustomToolbarItems>
+			<RichTextEditorCustomToolbarItem Name="Import">
+				<Template>
+					<SfUploader ID="UploadFiles" ShowFileList="false" CssClass="e-import">
+						<UploaderAsyncSettings SaveUrl="api/SampleData/Import"></UploaderAsyncSettings>
+						<UploaderEvents Success="@onSuccess"></UploaderEvents>
+						<UploaderButtons>
+							<UploaderButtonsProps Browse=""></UploaderButtonsProps>
+						</UploaderButtons>
+					</SfUploader>
+				</Template>
+			</RichTextEditorCustomToolbarItem>
+			<RichTextEditorCustomToolbarItem Name="Export">
+				<Template>
+					<SfButton OnClick="OnExport" CssClass="e-icons e-export"></SfButton>
+				</Template>
+			</RichTextEditorCustomToolbarItem>
+		</RichTextEditorCustomToolbarItems>
+	</RichTextEditorToolbarSettings>
+</SfRichTextEditor>
+
+<style>
+
+	.e-btn.e-icons.e-export::before {
+		content: '\e709';
+		color: #fff;
+	}
+
+	.e-richtexteditor .e-rte-toolbar .e-toolbar-item .e-icons.e-export {
+		padding: 8px;
+	}
+
+	.e-import.e-upload .e-upload-browse-btn {
+		font-family: "e-icons";
+	}
+
+	.e-import.e-upload .e-file-select-wrap {
+		padding: 0px;
+	}
+
+	.e-import.e-upload .e-file-drop, .e-import.e-upload .e-file-select {
+		display: none;
+	}
+
+	.e-import .e-upload-browse-btn::before {
+		content: '\e726';
+	}
+</style>
+
+
+	@code {
+	SfRichTextEditor RteObj;
+
+	[Inject]
+	IJSRuntime jsRuntime { get; set; }
+
+	private List<ToolbarItemModel> Tools = new List<ToolbarItemModel>()
+	{
+
+	new ToolbarItemModel() { Command = ToolbarCommand.Bold },
+	new ToolbarItemModel() { Command = ToolbarCommand.Italic },
+	new ToolbarItemModel() { Command = ToolbarCommand.Underline },
+	new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+	new ToolbarItemModel() { Command = ToolbarCommand.Formats },
+	new ToolbarItemModel() { Command = ToolbarCommand.Alignments },
+	new ToolbarItemModel() { Command = ToolbarCommand.OrderedList },
+	new ToolbarItemModel() { Command = ToolbarCommand.UnorderedList },
+	new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+	new ToolbarItemModel() { Command = ToolbarCommand.CreateLink },
+	new ToolbarItemModel() { Command = ToolbarCommand.Image },
+	new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+	new ToolbarItemModel() { Command = ToolbarCommand.SourceCode },
+	new ToolbarItemModel() { Command = ToolbarCommand.Undo },
+	new ToolbarItemModel() { Command = ToolbarCommand.Redo },
+	new ToolbarItemModel() { Name = "Export", TooltipText = "Export into RTF document" },
+	new ToolbarItemModel() { Name = "Import", TooltipText = "Import the RTF document" }
+	};
+
+
+	private string rteValue { get; set; } = "<p>The Rich Text Editor component is a WYSIWYG ('what you see is what you get') editor that provides the best user experience to create and update the content. Users can format their content using standard toolbar commands.</p>";
+
+	public async Task OnExport()
+	{
+
+		HttpClientHandler clientHandler = new HttpClientHandler();
+		clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+		HttpClient client = new HttpClient(clientHandler);
+		var content = new StringContent(rteValue);
+		content.Headers.Add("value", rteValue);
+		await client.PostAsync(navigationManager.Uri + "api/SampleData/ExportToRtf", content);
+		await SampleInterop.SaveAs<object>(jsRuntime, "Sample.rtf");
+	}
+
+	public void onSuccess(SuccessEventArgs args)
+	{
+		var headers = args.Response.Headers.ToString();
+		var header = headers.Split("rtevalue: ");
+		header = header[1].Split("\r");
+		this.rteValue = header[0];
+	}
+}

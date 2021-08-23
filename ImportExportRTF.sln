@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29521.150
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportExportRTF", "ImportExportRTF.csproj", "{B57EDE86-B775-4568-AFAF-6DF3AD96A061}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B57EDE86-B775-4568-AFAF-6DF3AD96A061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B57EDE86-B775-4568-AFAF-6DF3AD96A061}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B57EDE86-B775-4568-AFAF-6DF3AD96A061}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B57EDE86-B775-4568-AFAF-6DF3AD96A061}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A7565BCF-470E-4796-90F6-E008C89017A7}
+	EndGlobalSection
+EndGlobal
