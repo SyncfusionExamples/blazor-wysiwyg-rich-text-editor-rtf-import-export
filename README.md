@@ -93,3 +93,6 @@ millions in licensing fees by deploying our software.
 <p align="center">
   <a href="mailto:sales@syncfusion.com?Subject=Syncfusion Blazor Markdown Editor - Github" target="_top">sales@syncfusion.com</a> | <a href="https://www.syncfusion.com?utm_source=github&utm_medium=listing&utm_campaign=blazor-import-export-rtf-github-samples">www.syncfusion.com</a> | 1-888-9 DOTNET <br>
 </p>
+
+## Blog reference
+[Easily Import and Export RTF Files in Blazor with Accuracy](https://www.syncfusion.com/blogs/post/easily-import-and-export-rtf-files-in-blazor-with-accuracy.aspx)
