@@ -1,19 +1,24 @@
-# Blazor: Rich Text Editor for import and export the RTF document.
+# Blazor Rich Text Editor for import and export the RTF document
 
 The [Blazor Rich Text Editor](https://www.syncfusion.com/blazor-components/blazor-wysiwyg-rich-text-editor?utm_source=github&utm_medium=listing&utm_campaign=blazor-editor-github-samples) is a feature-rich WYSIWYG HTML editor. The Rich Text Editor is used to create blogs, forum posts, notes sections, support tickets (incidents), comment sections, messaging applications, and more. The control provides an efficient user interface for a better editing experience with mobile support. It has a variety of tools to edit and format rich content and returns valid HTML markup content.
 
 This example shows how to import and export the RTF document in Syncfusion Blazor Rich Text Editor by using Syncfusion.DocIO and Syncfusion.EJ.Export packages.
 
-## Project prerequisites
+## prerequisites
+
 Make sure you have the compatible versions of .NET Core on your machine before starting to work on this project. You also need the following:
 
-* [Visual Studio 2019 (version 16.4+)]( https://visualstudio.microsoft.com/downloads)
+* [Visual Studio 2022]( https://visualstudio.microsoft.com/downloads)
 * [.NET Core SDK 3.1.2+](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 *	[Syncfusion.DocIO.Net.Core](https://www.nuget.org/packages/Syncfusion.DocIO.Net.Core/)
 * [Syncfusion.EJ.Export](https://www.nuget.org/packages/Syncfusion.EJ.Export/)
 
 ## How to run this application
-To run this application, you need to first clone or download the ‘blazor-import-export-rtf’ repository and then open it in Visual Studio 2019. Now, build and run your project to view the output.
+
+* Checkout this project to a location in your disk.
+* Open the solution file using the Visual Studio 2022.
+* Restore the NuGet packages by rebuilding the solution.
+* Run the project.
 
 ## Further help
 To get more help, check out the [ASP.NET Core Blazor documentation](https://docs.microsoft.com/en-us/aspnet/core/blazor).
